@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const PORT = process.env.PORT || 8080
 // CONNECT DB
 require('./config/db')
 
@@ -24,7 +25,7 @@ app.get('/', (req, res) => {
 })
 app.use('/todo', require('./routes/Todo'))
 
-app.listen(8080, () => {
-    console.log('ok');
-})
+app.listen(PORT, () => {
+  console.log("ok");
+});
 
