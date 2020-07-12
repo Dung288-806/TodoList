@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -5,7 +6,6 @@ const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 8080
 // CONNECT DB
 require('./config/db')
-
 // db
 //   .authenticate()
 //   .then(() => {
@@ -20,10 +20,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 
-app.get('/', (req, res) => {
-    res.send('Home');
-})
-app.use('/todo', require('./routes/Todo'))
+// app.get('/', (req, res) => {
+//     res.send('Home');
+// })
+app.use(require('./routes/Todo'))
 
 app.listen(PORT, () => {
   console.log("ok");
